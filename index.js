@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors())
 
-const port = process.env.PORT || 6000
+// const port = process.env.PORT || 6000
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
@@ -41,7 +41,10 @@ mongoose.connect(process.env.MONGO_URI)
 //     next()
 // })
 
-// app.use("/api", userRoutes)
+app.use("/api", userRoutes)
+app.get("/", (req, res) => {
+  return res.send("<h1>Hello World!</h1>")
+})
 
 module.exports = app
 
